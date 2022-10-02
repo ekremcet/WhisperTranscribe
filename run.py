@@ -38,6 +38,7 @@ def console_entry():
     for ind, audio_file in enumerate(glob("./Data/Chunks/*.m4a")):
         result = transcriber.transcribe(audio_file)
         transcriber.write_result(result, args.name, ind)
+    print("Transcribe completed!!")
     # Clear download folders
     transcriber.clear()
 

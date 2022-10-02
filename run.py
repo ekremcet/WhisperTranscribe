@@ -19,7 +19,7 @@ parser.add_argument("-link", type=str,
                     help="link to YouTube video")
 parser.add_argument("-name", type=str,
                     help="name of the output")
-parser.add_argument("--size", type=str, default="base",
+parser.add_argument("--model", type=str, default="base",
                     choices=["tiny", "base", "small", "medium", "large"],
                     help="".join(
                         "{} -> {}\n".format(key, value) for key, value in model_sizes.items()))

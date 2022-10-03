@@ -1,4 +1,3 @@
-import whisper
 import argparse
 from Transcriber import Transcriber
 from glob import glob
@@ -27,7 +26,7 @@ parser.add_argument("--model", type=str, default="base",
 
 def console_entry():
     args = parser.parse_args()
-    model_size = args.size
+    model_size = args.model
     # Initialize transcriber
     transcriber = Transcriber(model_size=model_size)
     # Install SSL certificate to access youtube files - Needs SUDO permission

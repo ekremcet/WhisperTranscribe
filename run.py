@@ -34,7 +34,7 @@ def console_entry():
     # Download and save audio file from YouTube
     transcriber.download_audio(args.link)
     # Start transcribing
-    for ind, audio_file in enumerate(glob("./Data/Chunks/*.m4a")):
+    for ind, audio_file in enumerate(sorted(glob("./Data/Chunks/*.m4a"))):
         result = transcriber.transcribe(audio_file)
         transcriber.write_result(result, args.name, ind)
     print("Transcribe completed!!")

@@ -3,7 +3,7 @@ import os
 from glob import glob
 from docx import Document
 
-folder = "./YakazaDersler/"
+folder = "./Results/"
 
 results = sorted(os.listdir(folder))
 results = results[1:]

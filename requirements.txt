@@ -3,5 +3,6 @@ torch
 tqdm
 pytube
 more-itertools
+python-docx
 transformers>=4.19.0
 ffmpeg-python==0.2.0

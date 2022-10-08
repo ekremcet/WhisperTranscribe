@@ -43,7 +43,7 @@ class Transcriber:
             start_time = time.strftime('%H:%M:%S', time.gmtime(entry["start"]))
             end_time = time.strftime('%H:%M:%S', time.gmtime(entry["end"]))
             txt += "{} - {}: {} \n".format(start_time, end_time, entry["text"])
-            txt_noTime += entry["text"] + "\n"
+            txt_noTime += entry["text"]
 
         # save results
         os.makedirs("./Results/{}/".format(vid_name), exist_ok=True)

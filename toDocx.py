@@ -18,5 +18,6 @@ for result in results:
         with open(txt_file, "r") as f:
             for line in f:
                 doc.add_paragraph(line)
+        doc.add_paragraph()
 
     doc.save("./{}.docx".format(result))

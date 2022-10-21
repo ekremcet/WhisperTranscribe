@@ -27,6 +27,16 @@ class Transcriber:
         os.remove(os.path.join(path, file_name))
         self.segment_audio()
 
+    def extract_audio_gdrive(self, gdrive_path):
+        # this function downloads the video from GDrive, extracts audio and saves it
+        os.makedirs("./download/", exist_ok=True)
+        os.makedirs("./Data/", exist_ok=True)
+        aud_name = "./Data/Audio.m4a"
+        # convert to mp3
+        subprocess.run(["ffmpeg", "-i", gdrive_path,
+                        "-c:a", "copy", "-y", os.path.join(aud_name)])
+        self.segment_audio()
+
     def segment_audio(self):
         # Split the audio into 10 minute length chunks, so it is easier to process
         os.makedirs("./Data/Chunks/", exist_ok=True)

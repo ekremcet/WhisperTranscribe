@@ -33,8 +33,8 @@ class Transcriber:
         os.makedirs("./Data/", exist_ok=True)
         aud_name = "./Data/Audio.m4a"
         # convert to mp3
-        subprocess.run(["ffmpeg", "-i", gdrive_path,
-                        "-c:a", "copy", "-y", os.path.join(aud_name)])
+        subprocess.run(["ffmpeg", "-i", gdrive_path, "-map", "0:a",
+                        "-c", "copy", "-y", os.path.join(aud_name)])
         self.segment_audio()
 
     def segment_audio(self):

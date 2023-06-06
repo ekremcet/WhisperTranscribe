@@ -18,7 +18,7 @@ parser.add_argument("-name", type=str,
                     help="name of the output")
 parser.add_argument("-api", type=bool, default=False,
                     help="use OpenAI API to transcribe")
-parser.add_argument("-gdrive", type=bool, default=str,
+parser.add_argument("-gdrive", type=str, default=None,
                     help="path to google drive video")
 parser.add_argument("--model", type=str, default="base",
                     choices=["tiny", "base", "small", "medium", "large"],

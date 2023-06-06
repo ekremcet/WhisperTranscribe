@@ -20,7 +20,7 @@ def console_entry():
     transcriber = Transcriber(openai_key=args.apikey, model_size=None)
     # Download and save audio file
     if args.gdrive:
-        transcriber.extract_audio_gdrive(args.link)
+        transcriber.extract_audio_gdrive(args.gdrive)
     else:
         transcriber.download_audio(args.link)
     # Start transcribing

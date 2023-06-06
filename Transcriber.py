@@ -3,12 +3,16 @@ import subprocess
 import shutil
 import whisper
 import time
+import openai
 from pytube import YouTube
 
 
 class Transcriber:
-    def __init__(self, model_size):
-        self.model = whisper.load_model(model_size)
+    def __init__(self, model_size, openai_key=None):
+        if openai_key:
+            openai.api_key = openai_key
+        else:
+            self.model = whisper.load_model(model_size)
 
     def download_audio(self, link):
         # this function downloads the video from YouTube, extracts audio and saves it
@@ -45,6 +49,17 @@ class Transcriber:
 
     def transcribe(self, file):
         return self.model.transcribe(file)["segments"]
+
+    def transcribe_api(self, file):
+        af = open(file, "rb")
+        return openai.Audio.transcribe("whisper-1", file=af, temperature=0.0)
+
+    def write_api_result(self, result, vid_name, ind):
+        # save results
+        os.makedirs("./Results/{}/".format(vid_name), exist_ok=True)
+        with open("./Results/{}/{:03d}-{:03d}_noTimestamp.txt".format(vid_name, ind * 10, ind * 10 + 10), "w") as f:
+            f.write(result["text"])
+        pass
 
     def write_result(self, result, vid_name, ind):
         txt = ""
